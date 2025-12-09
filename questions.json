@@ -1,34 +1,32 @@
 {
-  "generated_at": "2025-12-01T10:00:00Z",
-  "questions": [
-    {
-      "id": "q1",
-      "type": "MCQ",
-      "topic": "TCP",
-      "difficulty": "Easy",
-      "text": "Which of the following is part of the TCP three-way handshake?",
-      "options": [
-        "A. SYN",
-        "B. SYN, ACK",
-        "C. SYN, SYN-ACK, ACK",
-        "D. FIN, ACK"
-      ]
-    },
-    {
-      "id": "q2",
-      "type": "NAT",
-      "topic": "NAT",
-      "difficulty": "Medium",
-      "text": "A private host 192.168.1.10 sends a packet to 8.8.8.8 on port 53. What will be the NAT translated source port? Answer: _______"
-    },
-    {
-      "id": "q3",
-      "type": "MATCH",
-      "topic": "Routing",
-      "difficulty": "Hard",
-      "text": "Match routing algorithms to their properties.",
-      "left": ["Dijkstra", "Bellman-Ford", "Flooding"],
-      "right": ["Global shortest path", "Distance vector", "Send to all neighbors"]
-    }
+  "id": "q1",
+  "type": "MSQ",
+  "topic": "IPv4 Addressing",
+  "difficulty": "Hard",
+  "text": "Consider a classless addressing scheme using CIDR. A router has the following entries in its routing table:\n\n192.168.0.0/22 -> Interface A\n192.168.4.0/23 -> Interface B\n192.168.6.0/24 -> Interface C\n192.168.7.0/25 -> Interface D\nDefault -> Interface E\n\nWhich of the following destination IP addresses will be forwarded to Interface D?\n\n",
+  "options": [
+    "192.168.7.129",
+    "192.168.7.64",
+    "192.168.7.1",
+    "192.168.7.255"
   ]
+}{
+  "id": "q1",
+  "type": "MCQ",
+  "topic": "Switching Delay",
+  "difficulty": "Medium",
+  "text": "A message of 1000 bytes is to be transmitted between two nodes using a packet-switched network. The packet size is 100 bytes, and the transmission rate is 1 Mbps. The propagation delay is 5 ms, and each packet requires 1 ms of processing delay at each intermediate node. If there is one intermediate node between the source and destination, what is the total end-to-end delay for the message?",
+  "options": [
+    "A. 110 ms",
+    "B. 115 ms",
+    "C. 120 ms",
+    "D. 125 ms"
+  ]
+} {
+  "id": "q0",
+  "type": "NAT",
+  "topic": "Error Detection",
+  "difficulty": "Easy",
+  "text": "Which of the following is a commonly used error detection code for data transmission?",
+  "options": ["A) ARQ", "B) CRC", "C) TCP", "D) MAC"]
 }
