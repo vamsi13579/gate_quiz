@@ -1,34 +1,26 @@
 {
 "questions": [
 {
-  "id": "q1",
-  "type": "MSQ",
-  "topic": "IPv4 Addressing",
+  "id": "q2",
+  "type": "NAT",
+  "topic": "Ethernet Bridging",
   "difficulty": "Hard",
-  "text": "Consider a classless addressing scheme using CIDR. A router has the following entries in its routing table:\n\n192.168.0.0/22 -> Interface A\n192.168.4.0/23 -> Interface B\n192.168.6.0/24 -> Interface C\n192.168.7.0/25 -> Interface D\nDefault -> Interface E\n\nWhich of the following destination IP addresses will be forwarded to Interface D?\n\n",
-  "options": [
-    "192.168.7.129",
-    "192.168.7.64",
-    "192.168.7.1",
-    "192.168.7.255"
-  ]
+  "text": "In a network with 8 hosts connected via point-to-point links to a single store-and-forward bridge, each link has a capacity of 1 Mbps. The bridge has two interfaces: one for incoming frames (from any host) and one for outgoing frames (to any host). A frame of 1000 bits is transmitted on the incoming link, but it is discarded at the bridge due to a checksum error. Assuming the bridge immediately begins retransmitting the same frame after detecting the error, and ignoring any processing delays or propagation delays, what is the total time in milliseconds required for the frame to be successfully transmitted and received on the outgoing link after the error is corrected? Answer: _______",
+  "options": null
 },{
   "id": "q1",
-  "type": "MCQ",
-  "topic": "Switching Delay",
+  "type": "MATCH",
+  "topic": "Virtual Circuit Switching",
   "difficulty": "Medium",
-  "text": "A message of 1000 bytes is to be transmitted between two nodes using a packet-switched network. The packet size is 100 bytes, and the transmission rate is 1 Mbps. The propagation delay is 5 ms, and each packet requires 1 ms of processing delay at each intermediate node. If there is one intermediate node between the source and destination, what is the total end-to-end delay for the message?",
-  "options": [
-    "A. 110 ms",
-    "B. 115 ms",
-    "C. 120 ms",
-    "D. 125 ms"
-  ]
+  "text": "Match the characteristics in List-I with the corresponding switching technique in List-II.",
+  "left": ["L1: Connection-oriented service", "L2: Dedicated path allocated for the session", "L3: Packet switching with pre-established path"],
+  "right": ["R1: Circuit Switching", "R2: Packet Switching", "R3: Virtual Circuit Switching"]
 }, {
   "id": "q0",
-  "type": "NAT",
-  "topic": "Error Detection",
+  "type": "STATEMENT",
+  "topic": "Flow Control",
   "difficulty": "Easy",
-  "text": "Which of the following is a commonly used error detection code for data transmission?",
-  "options": ["A) ARQ", "B) CRC", "C) TCP", "D) MAC"]
-}]}
+  "text": "Which of the following is NOT a common flow control mechanism?",
+  "options": ["a) Stop-and-Wait", "b) Sliding Window", "c) Connection-oriented", "d) Selective Repeat"]
+}
+]}
