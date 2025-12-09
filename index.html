@@ -16,6 +16,31 @@
     .match-grid { display:flex; gap:24px; }
     .left, .right { flex:1 }
     pre { background:#f8f8f8; padding:8px; border-radius:6px; }
+
+    /* ---- NEW SLIDER STYLES ---- */
+    .slide { display: none; }
+    .slide.active { display: block; }
+
+    .nav-buttons {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .nav-buttons button {
+      padding: 8px 16px;
+      margin: 0 8px;
+      cursor: pointer;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .nav-buttons button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -41,16 +66,19 @@
     function renderQuiz(data) {
       const quiz = document.getElementById('quiz');
       quiz.innerHTML = '';
-      document.getElementById('timestamp').innerText = data.generated_at ? 'Generated: ' + new Date(data.generated_at).toLocaleString() : '';
+      document.getElementById('timestamp').innerText =
+        data.generated_at ? 'Generated: ' + new Date(data.generated_at).toLocaleString() : '';
 
       if (!data.questions || !data.questions.length) {
         quiz.innerHTML = '<div class="q">No questions available.</div>';
         return;
       }
 
+      // ---- RENDER QUESTIONS AS SLIDES ----
       data.questions.forEach((q, idx) => {
         const container = document.createElement('div');
-        container.className = 'q';
+        container.className = 'q slide';
+        if (idx === 0) container.classList.add('active'); // show first
 
         const header = document.createElement('h3');
         header.innerText = `Q${idx+1} (${q.type}, ${q.difficulty}) — ${q.topic || ''}`;
@@ -87,7 +115,6 @@
           input.style.marginTop = '8px';
           container.appendChild(input);
         } else if (q.type === 'MATCH') {
-          // left / right columns
           const grid = document.createElement('div');
           grid.className = 'match-grid';
           const leftDiv = document.createElement('div'); leftDiv.className='left';
@@ -104,16 +131,22 @@
           grid.appendChild(leftDiv); grid.appendChild(rightDiv);
           container.appendChild(grid);
         } else if (q.type === 'STATEMENT') {
-          // assertion-reason style or True/False
           const pre = document.createElement('pre');
           pre.innerText = q.text;
           container.appendChild(pre);
+
           const opts = document.createElement('div'); opts.className='options';
           ['True','False'].forEach(v => {
             const id = `${q.id||'q'+idx}-tf-${v}`;
-            const label = document.createElement('label'); label.style.display='inline-block'; label.style.marginRight='12px';
-            const input = document.createElement('input'); input.type='radio'; input.name = q.id || 'q'+idx; input.id=id;
-            label.appendChild(input); label.appendChild(document.createTextNode(' ' + v));
+            const label = document.createElement('label');
+            label.style.display='inline-block';
+            label.style.marginRight='12px';
+            const input = document.createElement('input');
+            input.type='radio';
+            input.name = q.id || 'q'+idx;
+            input.id=id;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(' ' + v));
             opts.appendChild(label);
           });
           container.appendChild(opts);
@@ -121,11 +154,50 @@
 
         quiz.appendChild(container);
       });
+
+      // ---- NAV BUTTONS ----
+      const nav = document.createElement('div');
+      nav.className = 'nav-buttons';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.innerText = 'Previous';
+      prevBtn.id = 'prevBtn';
+      prevBtn.disabled = true;
+
+      const nextBtn = document.createElement('button');
+      nextBtn.innerText = 'Next';
+      nextBtn.id = 'nextBtn';
+
+      nav.appendChild(prevBtn);
+      nav.appendChild(nextBtn);
+      quiz.appendChild(nav);
+
+      // ---- SLIDER LOGIC ----
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      let current = 0;
+
+      function showSlide(i) {
+        slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+        prevBtn.disabled = (i === 0);
+        nextBtn.disabled = (i === slides.length - 1);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (current > 0) {
+          current--;
+          showSlide(current);
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (current < slides.length - 1) {
+          current++;
+          showSlide(current);
+        }
+      });
     }
 
     document.getElementById('refresh').addEventListener('click', fetchQuestions);
-    // optional: auto refresh every 60 seconds
-    // setInterval(fetchQuestions, 60000);
 
     // initial load
     fetchQuestions();
