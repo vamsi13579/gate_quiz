@@ -1,0 +1,4 @@
+const payload = {
+  generated_at: new Date().toISOString(),
+  questions: [q1, q2, q3]
+};
