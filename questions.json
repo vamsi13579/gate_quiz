@@ -1,4 +1,34 @@
-const payload = {
-  generated_at: new Date().toISOString(),
-  questions: [q1, q2, q3]
-};
+{
+  "generated_at": "2025-12-01T10:00:00Z",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "MCQ",
+      "topic": "TCP",
+      "difficulty": "Easy",
+      "text": "Which of the following is part of the TCP three-way handshake?",
+      "options": [
+        "A. SYN",
+        "B. SYN, ACK",
+        "C. SYN, SYN-ACK, ACK",
+        "D. FIN, ACK"
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "NAT",
+      "topic": "NAT",
+      "difficulty": "Medium",
+      "text": "A private host 192.168.1.10 sends a packet to 8.8.8.8 on port 53. What will be the NAT translated source port? Answer: _______"
+    },
+    {
+      "id": "q3",
+      "type": "MATCH",
+      "topic": "Routing",
+      "difficulty": "Hard",
+      "text": "Match routing algorithms to their properties.",
+      "left": ["Dijkstra", "Bellman-Ford", "Flooding"],
+      "right": ["Global shortest path", "Distance vector", "Send to all neighbors"]
+    }
+  ]
+}
