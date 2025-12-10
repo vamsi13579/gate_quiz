@@ -21,6 +21,6 @@
   "topic": "Link State Routing",
   "difficulty": "Easy",
   "text": "In OSPF, what is the purpose of flooding link state advertisements (LSAs)?",
-  "options": ["A) To reduce network congestion", "B) To propagate link state information throughout the network", "C) To encrypt routing updates", "D) To filter routing updates based on authentication"
+  "options": ["A) To reduce network congestion", "B) To propagate link state information throughout the network", "C) To encrypt routing updates", "D) To filter routing updates based on authentication"]
 }
 ]}
