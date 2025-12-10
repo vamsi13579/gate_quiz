@@ -2,25 +2,25 @@
 "questions": [
 {
   "id": "q2",
-  "type": "NAT",
-  "topic": "Ethernet Bridging",
+  "type": "MATCH",
+  "topic": "IPv4 Addressing",
   "difficulty": "Hard",
-  "text": "In a network with 8 hosts connected via point-to-point links to a single store-and-forward bridge, each link has a capacity of 1 Mbps. The bridge has two interfaces: one for incoming frames (from any host) and one for outgoing frames (to any host). A frame of 1000 bits is transmitted on the incoming link, but it is discarded at the bridge due to a checksum error. Assuming the bridge immediately begins retransmitting the same frame after detecting the error, and ignoring any processing delays or propagation delays, what is the total time in milliseconds required for the frame to be successfully transmitted and received on the outgoing link after the error is corrected? Answer: _______",
-  "options": null
+  "text": "Match the following CIDR notations with their respective subnet masks and the number of usable host addresses in each subnet.",
+  "left": ["192.168.1.0/24", "10.0.0.0/22", "172.16.0.0/27"],
+  "right": ["255.255.255.0, 254 hosts", "255.255.252.0, 1022 hosts", "255.255.255.224, 30 hosts"]
 },{
   "id": "q1",
-  "type": "MATCH",
-  "topic": "Virtual Circuit Switching",
+  "type": "STATEMENT",
+  "topic": "SMTP",
   "difficulty": "Medium",
-  "text": "Match the characteristics in List-I with the corresponding switching technique in List-II.",
-  "left": ["L1: Connection-oriented service", "L2: Dedicated path allocated for the session", "L3: Packet switching with pre-established path"],
-  "right": ["R1: Circuit Switching", "R2: Packet Switching", "R3: Virtual Circuit Switching"]
+  "text": "Consider the following two statements about SMTP: (A) SMTP uses persistent connections over TCP. (B) SMTP requires the messages to be in 7-bit ASCII format. Which of the above statements is/are TRUE?",
+  "options": ["Both A and B", "A only", "B only", "Neither A nor B"]
 }, {
   "id": "q0",
-  "type": "STATEMENT",
-  "topic": "Flow Control",
+  "type": "MCQ",
+  "topic": "Link State Routing",
   "difficulty": "Easy",
-  "text": "Which of the following is NOT a common flow control mechanism?",
-  "options": ["a) Stop-and-Wait", "b) Sliding Window", "c) Connection-oriented", "d) Selective Repeat"]
+  "text": "In OSPF, what is the purpose of flooding link state advertisements (LSAs)?",
+  "options": ["A) To reduce network congestion", "B) To propagate link state information throughout the network", "C) To encrypt routing updates", "D) To filter routing updates based on authentication"
 }
 ]}
