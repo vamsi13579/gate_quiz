@@ -130,7 +130,11 @@
           leftDiv.appendChild(leftList); rightDiv.appendChild(rightList);
           grid.appendChild(leftDiv); grid.appendChild(rightDiv);
           container.appendChild(grid);
-      } else if (q.type === 'STATEMENT') {
+     } else if (q.type === 'STATEMENT') {
+  const p = document.createElement('div');
+  p.innerHTML = q.text ? q.text.replace(/\n/g, '<br>') : '';
+  container.appendChild(p);
+
   const opts = document.createElement('div');
   opts.className = 'options';
 
@@ -145,12 +149,17 @@
     input.id = id;
 
     label.appendChild(input);
-    label.appendChild(document.createTextNode(' ' + opt));
+
+    const span = document.createElement('span');
+    span.innerHTML = ' ' + opt;
+    label.appendChild(span);
+
     opts.appendChild(label);
   });
 
   container.appendChild(opts);
 }
+
 
 
   
