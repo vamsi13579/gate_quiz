@@ -15,120 +15,118 @@
     .small { font-size: 0.9rem; color: #666 }
     .match-grid { display:flex; gap:24px; }
     .left, .right { flex:1 }
-    pre { background:#f8f8f8; padding:8px; border-radius:6px; }
   </style>
 </head>
 <body>
-  <h1>GATE — Computer Networks: Live Quiz</h1>
-  <div class="meta">
-    <button id="refresh" class="btn">Refresh</button>
-    <span id="timestamp" class="small"></span>
-  </div>
-  <div id="quiz"></div>
 
-  <script>
-    async function fetchQuestions() {
-      try {
-        const resp = await fetch('questions.json?t=' + Date.now()); // cache-bust
-        if (!resp.ok) throw new Error('Could not fetch questions.json: ' + resp.status);
-        const data = await resp.json();
-        renderQuiz(data);
-      } catch (err) {
-        document.getElementById('quiz').innerHTML = '<div class="q">Error loading questions: ' + err.message + '</div>';
-      }
-    }
+<h1>GATE — Computer Networks: Live Quiz</h1>
+<div class="meta">
+  <button id="refresh" class="btn">Refresh</button>
+  <span id="timestamp" class="small"></span>
+</div>
 
-    function renderQuiz(data) {
-      const quiz = document.getElementById('quiz');
-      quiz.innerHTML = '';
-      document.getElementById('timestamp').innerText = data.generated_at ? 'Generated: ' + new Date(data.generated_at).toLocaleString() : '';
+<div id="quiz"></div>
 
-      if (!data.questions || !data.questions.length) {
-        quiz.innerHTML = '<div class="q">No questions available.</div>';
-        return;
-      }
+<script>
+async function fetchQuestions() {
+  try {
+    const resp = await fetch('questions.json?t=' + Date.now());
+    if (!resp.ok) throw new Error('Failed to load questions');
+    const data = await resp.json();
+    renderQuiz(data);
+  } catch (err) {
+    document.getElementById('quiz').innerHTML =
+      `<div class="q">Error: ${err.message}</div>`;
+  }
+}
 
-      data.questions.forEach((q, idx) => {
-        const container = document.createElement('div');
-        container.className = 'q';
+function renderQuiz(data) {
+  const quiz = document.getElementById('quiz');
+  quiz.innerHTML = '';
 
-        const header = document.createElement('h3');
-        header.innerText = `Q${idx+1} (${q.type}, ${q.difficulty}) — ${q.topic || ''}`;
-        container.appendChild(header);
+  document.getElementById('timestamp').innerText =
+    data.generated_at ? 'Generated: ' + new Date(data.generated_at).toLocaleString() : '';
 
-        const p = document.createElement('div');
-        p.innerHTML = q.text ? q.text.replace(/\n/g, '<br>') : '';
-        container.appendChild(p);
+  if (!data.questions || !data.questions.length) {
+    quiz.innerHTML = '<div class="q">No questions available.</div>';
+    return;
+  }
 
-        // different renderers by type
-        if (q.type === 'MCQ' || q.type === 'MSQ') {
-          const list = document.createElement('div');
-          list.className = 'options';
-          q.options && q.options.forEach((opt, i) => {
-            const id = `${q.id || 'q'+idx}-opt-${i}`;
-            const label = document.createElement('label');
-            label.style.display = 'block';
-            const input = document.createElement('input');
-            input.type = (q.type === 'MCQ') ? 'radio' : 'checkbox';
-            input.name = q.id || 'q'+idx;
-            input.id = id;
-            label.appendChild(input);
-            const span = document.createElement('span');
-            span.innerHTML = ' ' + opt;
-            label.appendChild(span);
-            list.appendChild(label);
-          });
-          container.appendChild(list);
-        } else if (q.type === 'NAT') {
+  data.questions.forEach((q, idx) => {
+    const container = document.createElement('div');
+    container.className = 'q';
+
+    /* Header */
+    const header = document.createElement('h3');
+    header.innerText = `Q${idx + 1} (${q.type}, ${q.difficulty}) — ${q.topic || ''}`;
+    container.appendChild(header);
+
+    /* Question Text (ONLY ONCE) */
+    const text = document.createElement('div');
+    text.innerHTML = q.text.replace(/\n/g, '<br>');
+    container.appendChild(text);
+
+    /* Render by Type */
+    if (q.type === 'MCQ' || q.type === 'MSQ' || q.type === 'STATEMENT') {
+
+      if (q.options && q.options.length) {
+        const opts = document.createElement('div');
+        opts.className = 'options';
+
+        q.options.forEach((opt, i) => {
+          const label = document.createElement('label');
+          label.style.display = 'block';
+
           const input = document.createElement('input');
-          input.type = 'text';
-          input.placeholder = 'Answer: _______';
-          input.style.width = '80%';
-          input.style.marginTop = '8px';
-          container.appendChild(input);
-        } else if (q.type === 'MATCH') {
-          // left / right columns
-          const grid = document.createElement('div');
-          grid.className = 'match-grid';
-          const leftDiv = document.createElement('div'); leftDiv.className='left';
-          const rightDiv = document.createElement('div'); rightDiv.className='right';
-          const leftList = document.createElement('ol'); leftList.style.paddingLeft='20px';
-          (q.left || []).forEach(li => {
-            const liEl = document.createElement('li'); liEl.innerText = li; leftList.appendChild(liEl);
-          });
-          const rightList = document.createElement('ol'); rightList.style.paddingLeft='20px';
-          (q.right || []).forEach(li => {
-            const liEl = document.createElement('li'); liEl.innerText = li; rightList.appendChild(liEl);
-          });
-          leftDiv.appendChild(leftList); rightDiv.appendChild(rightList);
-          grid.appendChild(leftDiv); grid.appendChild(rightDiv);
-          container.appendChild(grid);
-        } else if (q.type === 'STATEMENT') {
-          // assertion-reason style or True/False
-          const pre = document.createElement('pre');
-          pre.innerText = q.text;
-          container.appendChild(pre);
-          const opts = document.createElement('div'); opts.className='options';
-          ['True','False'].forEach(v => {
-            const id = `${q.id||'q'+idx}-tf-${v}`;
-            const label = document.createElement('label'); label.style.display='inline-block'; label.style.marginRight='12px';
-            const input = document.createElement('input'); input.type='radio'; input.name = q.id || 'q'+idx; input.id=id;
-            label.appendChild(input); label.appendChild(document.createTextNode(' ' + v));
-            opts.appendChild(label);
-          });
-          container.appendChild(opts);
-        }
+          input.type = (q.type === 'MSQ') ? 'checkbox' : 'radio';
+          input.name = q.id || `q${idx}`;
 
-        quiz.appendChild(container);
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(' ' + opt));
+          opts.appendChild(label);
+        });
+
+        container.appendChild(opts);
+
+      } 
+
+    } else if (q.type === 'NAT') {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.placeholder = 'Enter numerical answer';
+      input.style.width = '60%';
+      container.appendChild(input);
+
+    } else if (q.type === 'MATCH') {
+      const grid = document.createElement('div');
+      grid.className = 'match-grid';
+
+      const left = document.createElement('ol');
+      q.left.forEach(i => {
+        const li = document.createElement('li');
+        li.innerText = i;
+        left.appendChild(li);
       });
+
+      const right = document.createElement('ol');
+      q.right.forEach(i => {
+        const li = document.createElement('li');
+        li.innerText = i;
+        right.appendChild(li);
+      });
+
+      grid.appendChild(left);
+      grid.appendChild(right);
+      container.appendChild(grid);
     }
 
-    document.getElementById('refresh').addEventListener('click', fetchQuestions);
-    // optional: auto refresh every 60 seconds
-    // setInterval(fetchQuestions, 60000);
+    quiz.appendChild(container);
+  });
+}
 
-    // initial load
-    fetchQuestions();
-  </script>
+document.getElementById('refresh').addEventListener('click', fetchQuestions);
+fetchQuestions();
+</script>
+
 </body>
 </html>
