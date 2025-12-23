@@ -2,35 +2,18 @@
 "questions": [
 {
   "id": "q2",
-  "type": "NAT",
-  "topic": "IP Fragmentation",
-  "difficulty": "Hard",
-  "text": "A 5000-byte IP datagram is to be transmitted over a network with an MTU of 1500 bytes. The original datagram has an identification number of 300. Assuming the 'Don't Fragment' bit is not set, what is the identification number of the last fragment generated? Answer: _______",
-  "options": null
-},{
-  "id": "q1",
   "type": "MATCH",
-  "topic": "Error Detection",
-  "difficulty": "Medium",
-  "text": "Consider the following error detection schemes and their typical applications. Match each scheme with the most appropriate application.",
-  "left": [
-    "A. Parity Bit",
-    "B. Cyclic Redundancy Check (CRC)",
-    "C. Checksum",
-    "D. Hamming Code"
-  ],
-  "right": [
-    "R1. High-speed data transmission over Ethernet",
-    "R2. Memory ECC (Error-Correcting Code) modules",
-    "R3. Simple serial communication with minimal overhead",
-    "R4. Reliable data transfer in network protocols like TCP"
-  ]
-}, {
+  "topic": "Virtual Circuit Switching",
+  "difficulty": "Hard",
+  "text": "Match the following terms related to virtual circuit switching with their corresponding descriptions.",
+  "left": ["Virtual Circuit Identifier (VCI)", "Setup Phase", "Teardown Phase", "Label Swapping"],
+  "right": ["A unique identifier used to distinguish different virtual circuits within the same network", "The phase where resources are allocated and the path is established before data transmission", "The phase where the virtual circuit is terminated and resources are released", "The process of replacing the incoming label with the outgoing label in a packet-switched network"]
+},{"id": "q1", "type": "NAT", "topic": "ARP", "difficulty": "Medium", "text": "In a network where a host needs to send an IP packet to another host on the same subnet, the sender must first resolve the destination IP address to a MAC address using ARP. If the sender's ARP cache is empty and the ARP request is sent as a broadcast, and the destination host responds with a unicast ARP reply, calculate the total number of data link layer frames transmitted on the LAN for this single IP packet delivery assuming no retransmissions. Answer: _______", "options": []}, {
   "id": "q0",
-  "type": "STATEMENT",
-  "topic": "Sockets",
+  "type": "MCQ",
+  "topic": "HTTP",
   "difficulty": "Easy",
-  "text": "In a client-server model, which of the following is the primary function of a socket?",
-  "options": ["To define the network topology", "To manage the operating system's memory", "To provide an endpoint for communication between two processes", "To encrypt data transmitted over the network"]
+  "text": "Which of the following HTTP methods is primarily used for retrieving a resource from the server?",
+  "options": ["A. POST", "B. PUT", "C. GET", "D. DELETE"]
 }
 ]}
