@@ -2,30 +2,28 @@
 "questions": [
 {
   "id": "q2",
-  "type": "MSQ",
-  "topic": "IP Datagrams",
+  "type": "NAT",
+  "topic": "Email",
   "difficulty": "Hard",
-  "text": "Consider an IP datagram of size 1400 bytes (including IP header) being transmitted over a network with an MTU of 620 bytes. The IP header is 20 bytes. Which of the following statements are TRUE regarding the fragmentation of this datagram?",
-  "options": [
-    "The datagram will be fragmented into exactly three fragments.",
-    "The MF (More Fragments) flag will be set in the first two fragments and cleared in the last fragment.",
-    "The fragment offset values for the fragments will be 0, 75, and 150 respectively.",
-    "All fragments will have the same Identification field value."
-  ]
+  "text": "In a secure email exchange, Alice sends an encrypted message to Bob. The message is encrypted using Bob's public key, and then Alice signs the encrypted message using her private key. If the public key of Bob is (e_B = 17, n_B = 3233) and the private key of Alice is (d_A = 2753, n_A = 3233), and the resulting ciphertext after encryption and signing is 3210, what is the original plaintext message that Bob will recover after decryption and verification? Answer: _______"
 },{
   "id": "q1",
-  "type": "MCQ",
-  "topic": "Medium Access Control",
+  "type": "MSQ",
+  "topic": "Framing",
   "difficulty": "Medium",
-  "text": "In a slotted ALOHA network with a total channel capacity of 2 Mbps, each station transmits frames of size 1000 bits. If the probability of a station transmitting in a slot is 0.2 and the expected number of successful transmissions per second is 300, what is the maximum number of stations that can be supported in this network?",
-  "options": ["A. 120", "B. 150", "C. 200", "D. 250"]
+  "text": "Consider the following statements about framing techniques in data link layer protocols. Which of the following statements are correct?",
+  "options": [
+    "Byte stuffing is used in PPP to handle the case when the flag byte appears in the payload.",
+    "Bit stuffing is used in HDLC to ensure that the flag pattern 01111110 does not appear in the data field.",
+    "In character count framing, the frame length is specified at the beginning of the frame, making it robust against errors.",
+    "The use of delimiters in framing requires special handling when the delimiter pattern appears in the actual data."
+  ]
 }, {
   "id": "q0",
-  "type": "MATCH",
-  "topic": "Switching Delay",
+  "type": "MCQ",
+  "topic": "Concept of Layering",
   "difficulty": "Easy",
-  "text": "Which of the following best describes the primary purpose of switching delay in a network switch?",
-  "left": ["Collision Avoidance", "Signal Amplification", "Frame Forwarding", "Data Encryption"],
-  "right": ["The time taken to process and forward a frame from input port to output port.", "Reducing interference between signals in the network.", "Converting digital signals to analog signals.", "Protecting data from unauthorized access."]
+  "text": "Which of the following is the primary benefit of using a layered architecture in computer networks?",
+  "options": ["A. Increased network speed", "B. Simplified network design and troubleshooting", "C. Enhanced data encryption", "D. Improved wireless signal strength"]
 }
 ]}
