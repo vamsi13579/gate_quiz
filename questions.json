@@ -2,18 +2,26 @@
 "questions": [
 {
   "id": "q2",
-  "type": "MATCH",
-  "topic": "Virtual Circuit Switching",
+  "type": "STATEMENT",
+  "topic": "Flooding",
   "difficulty": "Hard",
-  "text": "Match the following terms related to virtual circuit switching with their corresponding descriptions.",
-  "left": ["Virtual Circuit Identifier (VCI)", "Setup Phase", "Teardown Phase", "Label Swapping"],
-  "right": ["A unique identifier used to distinguish different virtual circuits within the same network", "The phase where resources are allocated and the path is established before data transmission", "The phase where the virtual circuit is terminated and resources are released", "The process of replacing the incoming label with the outgoing label in a packet-switched network"]
-},{"id": "q1", "type": "NAT", "topic": "ARP", "difficulty": "Medium", "text": "In a network where a host needs to send an IP packet to another host on the same subnet, the sender must first resolve the destination IP address to a MAC address using ARP. If the sender's ARP cache is empty and the ARP request is sent as a broadcast, and the destination host responds with a unicast ARP reply, calculate the total number of data link layer frames transmitted on the LAN for this single IP packet delivery assuming no retransmissions. Answer: _______", "options": []}, {
-  "id": "q0",
-  "type": "MCQ",
-  "topic": "HTTP",
-  "difficulty": "Easy",
-  "text": "Which of the following HTTP methods is primarily used for retrieving a resource from the server?",
-  "options": ["A. POST", "B. PUT", "C. GET", "D. DELETE"]
-}
-]}
+  "text": "Assertion: In a network using pure flooding, a packet originating from a node will reach every other node in the network exactly once. Reason: Pure flooding ensures that each node forwards the packet only on links where it has not been previously transmitted, preventing loops and duplicates."
+},{
+  "id": "q1",
+  "type": "MATCH",
+  "topic": "FTP",
+  "difficulty": "Medium",
+  "text": "Match the FTP commands with their primary purposes.",
+  "left": [
+    "USER",
+    "PASS",
+    "CWD",
+    "PASV"
+  ],
+  "right": [
+    "Specifies the username for authentication",
+    "Specifies the password for authentication",
+    "Changes the current working directory on the server",
+    "Requests the server to enter passive mode for data transfer"
+  ]
+}, {"id": "q0", "type": "NAT", "topic": "Switching Delay", "difficulty": "Easy", "text": "Which of the following is NOT a primary factor contributing to switching delay in a network switch? Answer: _______"}]}
