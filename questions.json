@@ -1,21 +1,25 @@
 {
 "questions": [
 {
-  "id": "q2",
-  "type": "MSQ",
-  "topic": "Ethernet Bridging",
+  "id": "q1",
+  "type": "MATCH",
+  "topic": "DHCP",
   "difficulty": "Hard",
-  "text": "Consider a network topology where two Ethernet LANs, LAN1 and LAN2, are interconnected using a transparent bridge. Host A is on LAN1 and Host B is on LAN2. The bridge uses a learning algorithm to populate its MAC address table. Which of the following statements are TRUE regarding the bridge's behavior and the network's operation? (Select all that apply.)",
-  "options": [
-    "When Host A initially sends a frame to Host B, the bridge will flood the frame to all ports except the one it was received on.",
-    "If Host B responds to Host A, the bridge will learn Host B's MAC address upon receiving the response frame.",
-    "The bridge will forward all broadcast frames from LAN1 to LAN2 and vice versa.",
-    "If Host A and Host B's MAC addresses are already in the bridge's MAC address table, subsequent unicast frames between them will not be forwarded to the opposite LAN."
-  ]
+  "text": "Match the DHCP message types with their corresponding scenarios in a typical DHCP client-server interaction.",
+  "left": ["DHCPDISCOVER", "DHCPOFFER", "DHCPREQUEST", "DHCPACK"],
+  "right": ["Client broadcasts to find available DHCP servers", "Server responds with an IP lease offer", "Client requests the offered IP address", "Server confirms the IP lease allocation"]
 },{
   "id": "q1",
   "type": "STATEMENT",
-  "topic": "UDP",
+  "topic": "TCP/IP Protocol Stack",
   "difficulty": "Medium",
-  "text": "Statement: In UDP, the checksum field is optional and can be set to zero to disable error detection at the transport layer."
-}, {"id": "q0", "type": "MATCH", "topic": "IP Datagrams", "difficulty": "Easy", "text": "Which of the following fields is NOT present in the IP header?", "left": ["Header Checksum", "Source Address", "Destination Address", "Padding"], "right": ["H", "D", "A", "P"]}]}
+  "text": "Consider the following statements regarding the TCP/IP protocol stack: 1. The Internet Protocol (IP) operates at the Network Layer and is responsible for host-to-host addressing and routing. 2. Transmission Control Protocol (TCP) ensures reliable data delivery at the Transport Layer through flow control and error checking. 3. The Application Layer protocols such as HTTP and FTP are directly responsible for routing packets across networks. Which of the above statements is/are correct?"
+}, {
+  "id": "q0",
+  "type": "MCQ",
+  "topic": "Distance Vector Routing",
+  "difficulty": "Easy",
+  "text": "In Distance Vector Routing, what is the primary method used for route updates?",
+  "options": ["A. Broadcasting routing tables to all neighbors", "B. Periodically exchanging routing tables with all neighbors", "C. Using a hierarchical routing scheme", "D. Employing link-state advertisements to update neighbors"]
+}
+]}
