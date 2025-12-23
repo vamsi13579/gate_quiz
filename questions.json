@@ -1,25 +1,31 @@
 {
 "questions": [
 {
-  "id": "q1",
-  "type": "MATCH",
-  "topic": "DHCP",
+  "id": "q2",
+  "type": "MSQ",
+  "topic": "IP Datagrams",
   "difficulty": "Hard",
-  "text": "Match the DHCP message types with their corresponding scenarios in a typical DHCP client-server interaction.",
-  "left": ["DHCPDISCOVER", "DHCPOFFER", "DHCPREQUEST", "DHCPACK"],
-  "right": ["Client broadcasts to find available DHCP servers", "Server responds with an IP lease offer", "Client requests the offered IP address", "Server confirms the IP lease allocation"]
+  "text": "Consider an IP datagram of size 1400 bytes (including IP header) being transmitted over a network with an MTU of 620 bytes. The IP header is 20 bytes. Which of the following statements are TRUE regarding the fragmentation of this datagram?",
+  "options": [
+    "The datagram will be fragmented into exactly three fragments.",
+    "The MF (More Fragments) flag will be set in the first two fragments and cleared in the last fragment.",
+    "The fragment offset values for the fragments will be 0, 75, and 150 respectively.",
+    "All fragments will have the same Identification field value."
+  ]
 },{
   "id": "q1",
-  "type": "STATEMENT",
-  "topic": "TCP/IP Protocol Stack",
+  "type": "MCQ",
+  "topic": "Medium Access Control",
   "difficulty": "Medium",
-  "text": "Consider the following statements regarding the TCP/IP protocol stack: 1. The Internet Protocol (IP) operates at the Network Layer and is responsible for host-to-host addressing and routing. 2. Transmission Control Protocol (TCP) ensures reliable data delivery at the Transport Layer through flow control and error checking. 3. The Application Layer protocols such as HTTP and FTP are directly responsible for routing packets across networks. Which of the above statements is/are correct?"
+  "text": "In a slotted ALOHA network with a total channel capacity of 2 Mbps, each station transmits frames of size 1000 bits. If the probability of a station transmitting in a slot is 0.2 and the expected number of successful transmissions per second is 300, what is the maximum number of stations that can be supported in this network?",
+  "options": ["A. 120", "B. 150", "C. 200", "D. 250"]
 }, {
   "id": "q0",
-  "type": "MCQ",
-  "topic": "Distance Vector Routing",
+  "type": "MATCH",
+  "topic": "Switching Delay",
   "difficulty": "Easy",
-  "text": "In Distance Vector Routing, what is the primary method used for route updates?",
-  "options": ["A. Broadcasting routing tables to all neighbors", "B. Periodically exchanging routing tables with all neighbors", "C. Using a hierarchical routing scheme", "D. Employing link-state advertisements to update neighbors"]
+  "text": "Which of the following best describes the primary purpose of switching delay in a network switch?",
+  "left": ["Collision Avoidance", "Signal Amplification", "Frame Forwarding", "Data Encryption"],
+  "right": ["The time taken to process and forward a frame from input port to output port.", "Reducing interference between signals in the network.", "Converting digital signals to analog signals.", "Protecting data from unauthorized access."]
 }
 ]}
