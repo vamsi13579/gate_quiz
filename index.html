@@ -130,27 +130,36 @@
           leftDiv.appendChild(leftList); rightDiv.appendChild(rightList);
           grid.appendChild(leftDiv); grid.appendChild(rightDiv);
           container.appendChild(grid);
-        } else if (q.type === 'STATEMENT') {
-          const pre = document.createElement('pre');
-          pre.innerText = q.text;
-          container.appendChild(pre);
+       } else if (q.type === 'STATEMENT') {
+  const p = document.createElement('div');
+  p.innerHTML = q.text ? q.text.replace(/\n/g, '<br>') : '';
+  container.appendChild(p);
 
-          const opts = document.createElement('div'); opts.className='options';
-          ['True','False'].forEach(v => {
-            const id = `${q.id||'q'+idx}-tf-${v}`;
-            const label = document.createElement('label');
-            label.style.display='inline-block';
-            label.style.marginRight='12px';
-            const input = document.createElement('input');
-            input.type='radio';
-            input.name = q.id || 'q'+idx;
-            input.id=id;
-            label.appendChild(input);
-            label.appendChild(document.createTextNode(' ' + v));
-            opts.appendChild(label);
-          });
-          container.appendChild(opts);
-        }
+  const opts = document.createElement('div');
+  opts.className = 'options';
+
+  q.options && q.options.forEach((opt, i) => {
+    const id = `${q.id || 'q'+idx}-opt-${i}`;
+    const label = document.createElement('label');
+    label.style.display = 'block';
+
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = q.id || 'q'+idx;
+    input.id = id;
+
+    label.appendChild(input);
+
+    const span = document.createElement('span');
+    span.innerHTML = ' ' + opt;
+    label.appendChild(span);
+
+    opts.appendChild(label);
+  });
+
+  container.appendChild(opts);
+}
+
 
         quiz.appendChild(container);
       });
