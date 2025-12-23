@@ -46,7 +46,7 @@
 <body>
   <h1>GATE — Computer Networks: Live Quiz</h1>
   <div class="meta">
-    <button id="refresh" class="btn">Refresh</button>
+   
     <span id="timestamp" class="small"></span>
   </div>
   <div id="quiz"></div>
@@ -130,11 +130,7 @@
           leftDiv.appendChild(leftList); rightDiv.appendChild(rightList);
           grid.appendChild(leftDiv); grid.appendChild(rightDiv);
           container.appendChild(grid);
-       } else if (q.type === 'STATEMENT') {
-  const p = document.createElement('div');
-  p.innerHTML = q.text ? q.text.replace(/\n/g, '<br>') : '';
-  container.appendChild(p);
-
+      } else if (q.type === 'STATEMENT') {
   const opts = document.createElement('div');
   opts.className = 'options';
 
@@ -149,13 +145,13 @@
     input.id = id;
 
     label.appendChild(input);
-
-    const span = document.createElement('span');
-    span.innerHTML = ' ' + opt;
-    label.appendChild(span);
-
+    label.appendChild(document.createTextNode(' ' + opt));
     opts.appendChild(label);
   });
+
+  container.appendChild(opts);
+}
+
 
   container.appendChild(opts);
 }
