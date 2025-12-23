@@ -2,26 +2,20 @@
 "questions": [
 {
   "id": "q2",
-  "type": "STATEMENT",
-  "topic": "Flooding",
+  "type": "MSQ",
+  "topic": "Ethernet Bridging",
   "difficulty": "Hard",
-  "text": "Assertion: In a network using pure flooding, a packet originating from a node will reach every other node in the network exactly once. Reason: Pure flooding ensures that each node forwards the packet only on links where it has not been previously transmitted, preventing loops and duplicates."
+  "text": "Consider a network topology where two Ethernet LANs, LAN1 and LAN2, are interconnected using a transparent bridge. Host A is on LAN1 and Host B is on LAN2. The bridge uses a learning algorithm to populate its MAC address table. Which of the following statements are TRUE regarding the bridge's behavior and the network's operation? (Select all that apply.)",
+  "options": [
+    "When Host A initially sends a frame to Host B, the bridge will flood the frame to all ports except the one it was received on.",
+    "If Host B responds to Host A, the bridge will learn Host B's MAC address upon receiving the response frame.",
+    "The bridge will forward all broadcast frames from LAN1 to LAN2 and vice versa.",
+    "If Host A and Host B's MAC addresses are already in the bridge's MAC address table, subsequent unicast frames between them will not be forwarded to the opposite LAN."
+  ]
 },{
   "id": "q1",
-  "type": "MATCH",
-  "topic": "FTP",
+  "type": "STATEMENT",
+  "topic": "UDP",
   "difficulty": "Medium",
-  "text": "Match the FTP commands with their primary purposes.",
-  "left": [
-    "USER",
-    "PASS",
-    "CWD",
-    "PASV"
-  ],
-  "right": [
-    "Specifies the username for authentication",
-    "Specifies the password for authentication",
-    "Changes the current working directory on the server",
-    "Requests the server to enter passive mode for data transfer"
-  ]
-}, {"id": "q0", "type": "NAT", "topic": "Switching Delay", "difficulty": "Easy", "text": "Which of the following is NOT a primary factor contributing to switching delay in a network switch? Answer: _______"}]}
+  "text": "Statement: In UDP, the checksum field is optional and can be set to zero to disable error detection at the transport layer."
+}, {"id": "q0", "type": "MATCH", "topic": "IP Datagrams", "difficulty": "Easy", "text": "Which of the following fields is NOT present in the IP header?", "left": ["Header Checksum", "Source Address", "Destination Address", "Padding"], "right": ["H", "D", "A", "P"]}]}
