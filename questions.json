@@ -2,25 +2,35 @@
 "questions": [
 {
   "id": "q2",
-  "type": "MATCH",
-  "topic": "IPv4 Addressing",
+  "type": "NAT",
+  "topic": "IP Fragmentation",
   "difficulty": "Hard",
-  "text": "Match the following CIDR notations with their respective subnet masks and the number of usable host addresses in each subnet.",
-  "left": ["192.168.1.0/24", "10.0.0.0/22", "172.16.0.0/27"],
-  "right": ["255.255.255.0, 254 hosts", "255.255.252.0, 1022 hosts", "255.255.255.224, 30 hosts"]
+  "text": "A 5000-byte IP datagram is to be transmitted over a network with an MTU of 1500 bytes. The original datagram has an identification number of 300. Assuming the 'Don't Fragment' bit is not set, what is the identification number of the last fragment generated? Answer: _______",
+  "options": null
 },{
   "id": "q1",
-  "type": "STATEMENT",
-  "topic": "SMTP",
+  "type": "MATCH",
+  "topic": "Error Detection",
   "difficulty": "Medium",
-  "text": "Consider the following two statements about SMTP: (A) SMTP uses persistent connections over TCP. (B) SMTP requires the messages to be in 7-bit ASCII format. Which of the above statements is/are TRUE?",
-  "options": ["Both A and B", "A only", "B only", "Neither A nor B"]
+  "text": "Consider the following error detection schemes and their typical applications. Match each scheme with the most appropriate application.",
+  "left": [
+    "A. Parity Bit",
+    "B. Cyclic Redundancy Check (CRC)",
+    "C. Checksum",
+    "D. Hamming Code"
+  ],
+  "right": [
+    "R1. High-speed data transmission over Ethernet",
+    "R2. Memory ECC (Error-Correcting Code) modules",
+    "R3. Simple serial communication with minimal overhead",
+    "R4. Reliable data transfer in network protocols like TCP"
+  ]
 }, {
   "id": "q0",
-  "type": "MCQ",
-  "topic": "Link State Routing",
+  "type": "STATEMENT",
+  "topic": "Sockets",
   "difficulty": "Easy",
-  "text": "In OSPF, what is the purpose of flooding link state advertisements (LSAs)?",
-  "options": ["A) To reduce network congestion", "B) To propagate link state information throughout the network", "C) To encrypt routing updates", "D) To filter routing updates based on authentication"]
+  "text": "In a client-server model, which of the following is the primary function of a socket?",
+  "options": ["To define the network topology", "To manage the operating system's memory", "To provide an endpoint for communication between two processes", "To encrypt data transmitted over the network"]
 }
 ]}
